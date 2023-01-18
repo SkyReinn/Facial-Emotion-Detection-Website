@@ -10,7 +10,6 @@ from keras.models import load_model
 import matplotlib.pyplot as plt 
 from PIL import Image
 import numpy as np
-import cv2
 
 app = Flask(__name__)
 
@@ -28,8 +27,15 @@ def predict():
     #load and resize image
     image = request.files['image']
     img = Image.open(image)
+    
+    #resize image
     img = img.resize((48, 48))
-    img_array = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2GRAY)
+    
+    #convert to grayscale
+    img = img.convert('L')
+    
+    #save grayscale image to variable
+    img_array = np.array(img)
     
     #show image in 48*48 greyscale format
     plt.imshow(img_array, cmap='gray')
