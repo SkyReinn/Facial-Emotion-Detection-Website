@@ -9,11 +9,15 @@ from flask import Flask, request, render_template
 from keras.models import load_model
 from PIL import Image
 import numpy as np
+import os
 
-app = Flask(__name__)
+#disable GPU
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 #load vgg model
 vgg = load_model('vgg_model.h5')
+
+app = Flask(__name__)
 
 @app.route('/')
 def home():
