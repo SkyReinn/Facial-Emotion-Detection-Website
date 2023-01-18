@@ -13,10 +13,8 @@ import numpy as np
 
 app = Flask(__name__)
 
-#load cnn model
-cnn = load_model('cnn_model.h5')
+#load vgg model
 vgg = load_model('vgg_model.h5')
-
 
 @app.route('/')
 def home():
