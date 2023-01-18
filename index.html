@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -142,10 +142,6 @@
         font-size: 20px;
       }
 
-      .upload-choosefile {
-        text-align: center;
-      }
-
       nav.container {
         display: flex;
         justify-content: center;
@@ -188,7 +184,20 @@
       }
 
       .button3 {
-        background-color: #26b8d5;
+        background-color: #26d534;
+      }
+
+      .prediction {
+        position: relative;
+        top: 450px;
+      }
+
+      .form-center {
+        display: flex;
+        position: absolute;
+        bottom: -600px;
+        left: 45%;
+        z-index: 1;
       }
     </style>
   </head>
@@ -201,9 +210,8 @@
     <img class="logo" src=https://www.axestrack.com/wp-content/uploads/2021/04/Ai-Capabilities-01-01.png alt="logo" />
     <!--Create a main image-->
     <img class="main-image" src=https://kylycst.com/wp-content/uploads/2020/01/facial-recognition.png alt="Main image" />
-    <!-- Use the nav element for the website navigation menu -->
     <nav>
-      <!-- Use an unordered list for the navigation links -->
+      <!-- Navigation Links -->
       <nav class="container">
         <a href="#starting points" class="button0">Our Mechanism</a>
         <a href="#how it works" class="button1">How it works</a>
@@ -239,18 +247,24 @@
         </td>
         </tr>
         <!-- Image File Input -->
-        <form class="upload-choosefile" method="post" action="{{ url_for('predict') }}" enctype="multipart/form-data">
-          <div>
-            <input type="file" name="image" id="image">
-          </div>
-          <div>
-            <button type="submit" id="upload-button">Upload</button>
-          </div>
-        </form>
+        <div class="form-center">
+          <form method="post" action="{{ url_for('predict') }}" enctype="multipart/form-data">
+            <div>
+              <input type="file" name="image" id="image">
+            </div>
+            <div>
+              <button type="submit" id="upload-button">Upload</button>
+            </div>
+          </form>
+        </div>
         <img id="image" width="200" />
         <!-- Text Fields for the Prediction and the Probability -->
-        <h4 class="prediction">Prediction</h4>
-        <!-- Emotion Predicted -->
-        <h4 class="prediction-text">{{ prediction_text }} </h4>
+        <div class="prediction">
+          <h4>Prediction</h4>
+          <!-- Emotion Predicted -->
+          <h4>{{ prediction_text }}</h4>
+        </div>
   </body>
 </html>
+
+
