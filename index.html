@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="HTML, CSS" />
     <meta name="description" content="..." />
-    <title>Facial Recognition System</title>
+    <title>Facial Emotion Detection System</title>
     <style>
       :root {
         --primary-color: #160000;
@@ -15,8 +15,7 @@
 
       /* Set the background color and image for the body element */
       body {
-        background: linear-gradient(90deg, rgba(3, 88, 174, 0.558) 0%, rgb(43, 132, 183) 35%, rgb(117, 233, 246) 100%);
-        background-position: center;
+        background: linear-gradient(black,blue,black)
       }
 
       html {
@@ -28,6 +27,7 @@
         font-size: 50px;
         text-align: center;
         font-family: monospace;
+        color: gray;
       }
 
       .subheader {
@@ -35,6 +35,7 @@
         text-align: center;
         font-size: 25;
         font-family: monospace;
+        color: gray;
       }
 
       .logo {
@@ -58,7 +59,7 @@
         bottom: 500px;
       }
 
-      .Services {
+      .Resources {
         margin-top: 1000px;
         text-align: center;
         position: relative;
@@ -84,11 +85,11 @@
         font-size: large;
         border-radius: 25px;
         font-family: monospace;
-        padding-bottom: 200px;
+        padding-bottom: 500px;
       }
 
       .section1 {
-        background-color: rgb(205, 238, 17);
+        background-color: rgb(172, 17, 238);
         margin: 200px;
         width: 400;
         align-items: center;
@@ -100,7 +101,7 @@
       }
 
       .section2 {
-        background-color: rgb(64, 204, 59);
+        background-color: rgb(20, 121, 223);
         margin: 200px;
         width: 400;
         align-items: center;
@@ -112,7 +113,7 @@
       }
 
       .section3 {
-        background-color: rgb(85, 176, 199);
+        background-color: rgb(13, 255, 0);
         margin: 200px;
         width: 400;
         align-items: center;
@@ -187,27 +188,55 @@
         background-color: #26d534;
       }
 
-      .prediction {
-        position: relative;
-        top: 450px;
+      .database-link {
+        z-index: 1;
       }
 
       .form-center {
         display: flex;
         position: absolute;
-        bottom: -600px;
-        left: 45%;
+        bottom: -550px;
+        left: 37%;
+        z-index: 2;
+        text-align: center;
+      }
+
+      .facial-image {
+        display: flex;
+        position: absolute;
+        bottom: -850px;
+        left: 40%;
         z-index: 1;
+        text-align: center;
+      }
+      
+      .prediction {
+        position: absolute;
+        bottom: -550px;
+        left: 43%;
+        z-index: 1;
+        text-align: center;
+      }
+    
+      .prediction h4 {
+        display: block;
+        margin-bottom: 10px;
       }
     </style>
   </head>
   <body>
+    <script>
+      var loadFile = function(event) {
+        var image = document.getElementById("image");
+        image.src = URL.createObjectURL(event.target.files[0]);
+      };
+    </script>
     <!-- Use the header element for the website header -->
-    <header class="header">Facial Recognition System</header>
+    <header class="header">Facial Emotion Detection Website</header>
     <!--Create a subheader-->
-    <h1 class="subheader">Reaching for the Stars ⭐</h1>
+    <h1 class="subheader">Reaching for the Stars 🚀</h1>
     <!-- Use a logo image for the website logo -->
-    <img class="logo" src=https://www.axestrack.com/wp-content/uploads/2021/04/Ai-Capabilities-01-01.png alt="logo" />
+    <img class="logo" src=https://webstockreview.net/images/mars-clipart-backround-1.png alt="logo" />
     <!--Create a main image-->
     <img class="main-image" src=https://kylycst.com/wp-content/uploads/2020/01/facial-recognition.png alt="Main image" />
     <nav>
@@ -215,34 +244,35 @@
       <nav class="container">
         <a href="#starting points" class="button0">Our Mechanism</a>
         <a href="#how it works" class="button1">How it works</a>
-        <a href="#future services" class="button2">Future Services</a>
+        <a href="#resources" class="button2">Resources</a>
         <a href="#about us" class="button3">About Us</a>
       </nav>
       <table>
         <tr>
           <td>
             <div id="starting points" class="section0">
-              <h3> Use our Facial Recognition here: </h3>
-              <!-- Paragraph Texts -->
+              <h3> Upload a picture </h3>
+        <!-- Paragraph Texts -->
         <tr>
           <td>
             <div id="how it works" class="section1">
               <h3> How it works </h3>
-              <p>Facial recognition is a technology used to identify or verify individuals from images or videos of their faces. It uses algorithms to analyze and compare specific facial features from an image with a database of known faces, in order to identify an individual or confirm their identity. It can also be used to identify emotions of the individual such as happy, sad, or angry. </p>
+              <p>For our website, we used a transfer learning model (vgg16) and trained it as a Convolutional Neural Network (CNN). We trained the model using 20,000 pictures from the fer2013 dataset. It can detect 5 emotions: happy, sad, neutral, surprise and angry. (Although the AI achieved about 70% accuracy on the dataset, the accuracy will be lower when using pictures not in the data set.) </p>
             </div>
           </td>
         </tr>
         <tr>
           <td>
-            <div id="future services" class="section2">
-              <h3>Future Services</h3>
-              <p>Currently we are creating multiple other tools in a few other coding languages such as Python, C++, and Java. Stay tuned for more info!</p>
+            <div id="resources" class="section2">
+              <h3>Resources</h3>
+              <p>image database: fer2013 https://paperswithcode.com/dataset/fer2013</p>
+            </div>
         </tr>
         </tr>
         <td>
           <div id="about us" class="section3">
             <h3>About Us</h3>
-            <p>This front-end of this website was creatd by Rohan Rao (2025) and the back-end was created by David Wang (2024).</p>
+            <p>The front-end of this website was creatd by Rohan Rao, the back-end and AI was created by David Wang.</p>
           </div>
         </td>
         </tr>
@@ -250,14 +280,14 @@
         <div class="form-center">
           <form method="post" action="{{ url_for('predict') }}" enctype="multipart/form-data">
             <div>
-              <input type="file" name="image" id="image">
+              <input type="file" accept="image/*" name="image" onchange="loadFile(event)">
             </div>
             <div>
               <button type="submit" id="upload-button">Upload</button>
             </div>
           </form>
         </div>
-        <img id="image" width="200" />
+        <img class="facial-image" id="image" width="200" />
         <!-- Text Fields for the Prediction and the Probability -->
         <div class="prediction">
           <h4>Prediction</h4>
@@ -266,5 +296,4 @@
         </div>
   </body>
 </html>
-
 

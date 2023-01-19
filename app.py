@@ -9,10 +9,6 @@ from flask import Flask, request, render_template
 from keras.models import load_model
 from PIL import Image
 import numpy as np
-import os
-
-#disable GPU
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 #load vgg model
 vgg = load_model('vgg_model.h5')
@@ -37,7 +33,7 @@ def predict():
     
     #save grayscale image to variable
     img_array = np.array(img)
-    
+
     #reshape image for prediction
     img_array = np.expand_dims(img_array, axis=-1)
     img_array = np.stack((img_array,)*3, axis=-1)
