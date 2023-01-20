@@ -7,6 +7,7 @@ Created on Mon Jan  9 22:49:37 2023
 
 from flask import Flask, request, render_template
 from keras.models import load_model
+import matplotlib.pyplot as plt 
 from PIL import Image
 import numpy as np
 
@@ -33,7 +34,11 @@ def predict():
     
     #save grayscale image to variable
     img_array = np.array(img)
-
+    
+    #show image in 48*48 greyscale format
+    plt.imshow(img_array, cmap='gray')
+    plt.show()
+    
     #reshape image for prediction
     img_array = np.expand_dims(img_array, axis=-1)
     img_array = np.stack((img_array,)*3, axis=-1)
@@ -43,6 +48,9 @@ def predict():
     pred = vgg.predict(img_array)[0]
     emotions = ["Angry","Happy","Sad","Surprise","Neutral"]
     pred_emotion = emotions[np.argmax(pred)]
+    print("prediction:")
+    print(pred_emotion)
+    print(pred)
     
     #return prediction
     return render_template('index.html', prediction_text = pred_emotion)
